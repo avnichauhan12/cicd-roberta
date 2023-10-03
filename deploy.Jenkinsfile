@@ -10,7 +10,7 @@ pipeline {
                 sh '''
                 echo change in YAML the value of docker image to: $ROBERTA_IMAGE_URL
                 echo "kubectl apply -f ...."
-                ''''
+                '''
             }
         }
     }
