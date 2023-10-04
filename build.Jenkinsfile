@@ -15,6 +15,14 @@ pipeline {
                     '''
                 }
             }
+            post {
+               always {
+                 sh '''
+                 docker image prune -f -a --filter "until=240h"
+                 '''
+               }
+
+            }
         }
         stage('Trigger Deploy') {
             steps {
@@ -22,6 +30,8 @@ pipeline {
                     string(name: 'ROBERTA_IMAGE_URL', value: "alonithuji/roberta:latest")
                 ]
             }
+
         }
+
     }
 }
