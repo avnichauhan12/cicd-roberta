@@ -10,8 +10,8 @@ pipeline {
                     sh '''
                     docker login --username $USERNAME --password $PASSWORD
                     docker build -t roberta:latest .
-                    docker tag roberta:latest alonithuji/roberta:latest
-                    docker push alonithuji/roberta:latest
+                    docker tag roberta:latest avnichauhan/roberta:latest
+                    docker push avnichauhan/roberta:latest
                     '''
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
         stage('Trigger Deploy') {
             steps {
                 build job: 'RobertaDeploy', wait: false, parameters: [
-                    string(name: 'ROBERTA_IMAGE_URL', value: "alonithuji/roberta:latest")
+                    string(name: 'ROBERTA_IMAGE_URL', value: "avnichauhan/roberta:latest")
                 ]
             }
 
